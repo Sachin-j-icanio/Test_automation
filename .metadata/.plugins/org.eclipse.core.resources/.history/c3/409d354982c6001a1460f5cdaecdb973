@@ -1,0 +1,28 @@
+package selenium_sample;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class FirstScript {
+ 
+	public static void main (String[] args) {
+		System.setProperty("webdriver.chrome.driver", "C:\\work\\Selenium\\chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.get("https://dev-esi-admin-kmywba2exq-uc.a.run.app/");
+		driver.manage().window().maximize();
+		driver.findElement(By.id("username")).sendKeys("test@icanio.com");
+		
+		String at = driver.getTitle();
+		String et = "ElasticSI";
+		driver.close();
+		if(at.equalsIgnoreCase(et))
+		{
+			System.out.println("Testcase passed");
+		}
+		else {
+			System.out.println("Testcase failed");
+		}
+	}
+}
